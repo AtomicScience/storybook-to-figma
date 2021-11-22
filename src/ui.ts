@@ -1,3 +1,4 @@
+/// <reference lib="dom" />
 import './ui.css'
 
 document.onload = () => {
