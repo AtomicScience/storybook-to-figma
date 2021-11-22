@@ -70,8 +70,7 @@ module.exports = (env, argv) => {
                     },
                 ],
             }),
-            new HtmlWebpackInlineSourcePlugin(HtmlWebpackPlugin),
-            // argv.mode === 'production' && new HtmlWebpackInlineSourcePlugin(HtmlWebpackPlugin),
+            new HtmlWebpackInlineSourcePlugin(HtmlWebpackPlugin)
         ].filter(Boolean),
     };
 };
