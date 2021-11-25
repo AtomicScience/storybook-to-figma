@@ -12,8 +12,8 @@
   justify-content: stretch;
 }
 
-#storybook-chooser {
-  background-color: hsl(204, 42%, 95%);
+#menu {
+  background-color: #f5f9fc;
   
   border-color: black;
   border-width: 2px;
@@ -21,13 +21,25 @@
   padding: 10px;
 
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
-  flex-flow: column;
+  flex-flow: row;
 }
 
-#storybook-chooser > h3 {
+#menu h3 {
   margin: 5px;
+}
+
+#menu button {
+  margin: 5px;
+}
+
+#storybook-chooser {
+  flex-basis: 40%;
+}
+
+#storybook-adder {
+  flex-basis: 40%;
 }
 
 body {
