@@ -1,28 +1,45 @@
 <div id="container">
     <iframe src="http://localhost:6006"></iframe>
-    <div id="menu">
-        <div id="storybook-chooser">
-            <h3>Select a Storybook to open</h3>
-            <select name="" id="select-menu1" class="select-menu">
-                <option value="">Select a storybook</option>
-                <option value="1">Storybook number 1</option>
-                <option value="2">Storybook number 2</option>
-                <option value="3">Storybook number 3</option>
-                <option value="4">Storybook number 4</option>
-            </select>
-            <button class="button button--secondary-destructive mb-xxsmall">Delete this storybook</button>
-        </div>
-        <div id="storybook-adder">
-            <h3>Add a new Storybook</h3>
-            <div class="input input--with-icon mb-xxsmall">
-                <div class="icon icon--draft"></div>
-                <input type="input" class="input__field" placeholder="Storybook link">
+
+    <div class="icon-button floating_button" id="open_modal_button">
+        <div class="icon icon--settings icon--white8"></div>
+    </div>
+
+    <div class="flex_modal_wrap">
+        <div class="modal">
+            <!-- Close button -->
+            <div class="icon-button icon--white8" id="close_modal_button">
+                <div class="icon icon--close"></div>
             </div>
-            <div class="input input--with-icon mb-xxsmall">
-                <div class="icon icon--library"></div>
-                <input type="input" class="input__field" placeholder="Name of the Storybook">
+            
+            <!-- Left column -->
+            <div class="modal_column">
+                <h3>Select a Storybook</h3>
+                <select name="" id="select-menu1" class="select-menu" disabled>
+                    <option value="">No Storybooks here!</option>
+                </select>
+                <!-- Buttons -->
+                <button id="delete_button" disabled class="button button--secondary-destructive mb-xxsmall">
+                    Delete this storybook
+                </button>
+                <button id="delete_confirm_button" class="button button--primary-destructive mb-xxsmall">
+                    Are you sure?
+                </button>
             </div>
-            <button class="button button--primary mb-xxsmall">Add a Storybook</button>
+
+            <!-- Right column -->
+            <div class="modal_column">
+                <h3>Add a new Storybook</h3>
+                <div class="input input--with-icon mb-xxsmall">
+                    <div class="icon icon--link-connected"></div>
+                    <input type="input" class="input__field" placeholder="Storybook link">
+                </div>
+                <div class="input input--with-icon mb-xxsmall">
+                    <div class="icon icon--library"></div>
+                    <input type="input" class="input__field" placeholder="Name of the Storybook">
+                </div>
+                <button class="button button--primary mb-xxsmall">Add a Storybook</button>
+            </div>
         </div>
     </div>
 </div>
