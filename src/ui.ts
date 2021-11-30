@@ -4,7 +4,12 @@ import { selectMenu, disclosure } from 'figma-plugin-ds';
 import { modalWindow } from './modules/modalWindow'
 import { todoList } from './modules/todoList'
 
-window.addEventListener('message', (e) => window.parent.postMessage(e.data, '*'));
+// Catch a message from the Storybok frame and pass it to the Figma 
+window.addEventListener('message', (e) => {
+    if (e.data.pluginMessage && e.data.pluginMessage.data) {
+        window.parent.postMessage(e.data, '*');
+    }
+});
 
 window.onload = () => {
     selectMenu.init();
