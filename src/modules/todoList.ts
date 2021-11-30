@@ -34,6 +34,9 @@ async function onTodoAddButtonClick(e : MouseEvent) : Promise<void> {
     let input = document.getElementById("todo_input") as HTMLInputElement;
 
     items.push(input.value);
+
+    input.value = "";
+
     updateTodoList();
 
     await saveItemsToFigmaStorage();
@@ -86,6 +89,7 @@ async function saveItemsToFigmaStorage() : Promise<string> {
 function createAndSendRequestToFigma(request : string, payload? : any) : Request {
     let requestMessage = {
         request: request,
+        payload: payload,
         timestamp: Date.now() // Timestamp serves as an ID for requests and responces
     };
 
