@@ -6,8 +6,8 @@ import { todoList } from './modules/todoList'
 
 // Catch a message from the Storybok frame and pass it to the Figma 
 window.addEventListener('message', (e) => {
-    if (e.data.pluginMessage && e.data.pluginMessage.data) {
-        window.parent.postMessage(e.data, '*');
+    if (e.data.pluginMessage?.data) {
+        window.parent.postMessage(e.data, 'https://www.figma.com');
     }
 });
 
