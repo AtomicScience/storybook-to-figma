@@ -12,33 +12,19 @@
                 <div class="icon icon--close"></div>
             </div>
             
-            <!-- Left column -->
-            <div class="modal_column">
-                <h3>Select a Storybook</h3>
-                <select name="" id="select-menu1" class="select-menu" disabled>
-                    <option value="">No Storybooks here!</option>
-                </select>
-                <!-- Buttons -->
-                <button id="delete_button" disabled class="button button--secondary-destructive mb-xxsmall">
-                    Delete this storybook
-                </button>
-                <button id="delete_confirm_button" class="button button--primary-destructive mb-xxsmall">
-                    Are you sure?
-                </button>
+            <div class="todo_list" id="todo_list">
+                <div class="todo_item todo_item_actual">Some text!</div>
+                <div class="todo_item todo_item_actual">More text!</div>
+                <div class="todo_item todo_item_actual">Even more text!</div>
             </div>
 
-            <!-- Right column -->
-            <div class="modal_column">
-                <h3>Add a new Storybook</h3>
-                <div class="input input--with-icon mb-xxsmall">
-                    <div class="icon icon--link-connected"></div>
-                    <input type="input" class="input__field" placeholder="Storybook link">
-                </div>
-                <div class="input input--with-icon mb-xxsmall">
+            <div class="todo_entry_panel">
+                <div class="input input--with-icon mb-small todo_input">
                     <div class="icon icon--library"></div>
-                    <input type="input" class="input__field" placeholder="Name of the Storybook">
+                    <input type="input" class="input__field" placeholder="TODO entry" id="todo_input">
                 </div>
-                <button class="button button--primary mb-xxsmall">Add a Storybook</button>
+
+                <button class="button button--primary mb-xxsmall todo_button" id="todo_button">Add entry</button>
             </div>
         </div>
     </div>
