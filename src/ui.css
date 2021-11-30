@@ -12,7 +12,7 @@
   justify-content: stretch;
 }
 
-.flex_modal_wrap {
+.modal_background {
   display: none;
 
   width: 100%;
