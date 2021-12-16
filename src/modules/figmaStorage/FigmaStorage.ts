@@ -26,7 +26,6 @@ async function sendRequestAndExpectResult(request : FigmaRequest) : Promise<any 
 }
 
 async function sendRequest(request : FigmaRequest) {
-    console.log(request);
     window.parent.postMessage({ pluginMessage: request }, "https://www.figma.com");
 }
 
