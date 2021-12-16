@@ -1,7 +1,7 @@
 /// <reference lib="dom" />
 import './ui.css'
 import { selectMenu, disclosure } from 'figma-plugin-ds';
-import { modalWindow } from './modules/modalWindow'
+import { modalWindow } from './modules/ui/modalWindow'
 
 window.addEventListener('message', (e) => window.parent.postMessage(e.data, '*'));
 
