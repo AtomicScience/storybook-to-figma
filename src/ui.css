@@ -73,6 +73,10 @@
   right: -30px;
 }
 
+.input__field:placeholder-shown, .input__field:placeholder-shown:hover {
+  border-color: #f24822;
+}
+
 .floating_button {
   position: fixed;
 
