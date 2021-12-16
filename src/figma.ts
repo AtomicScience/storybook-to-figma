@@ -1,4 +1,5 @@
 import { defaultFont, getDropOffset, addLayersToFrame } from 'html-figma/figma';
+import RequestType from './modules/figmaStorage/requestType';
 
 figma.showUI(__html__, {
   width: 750,
@@ -36,26 +37,26 @@ async function processAddonMessage(message : any) : Promise<void> {
 }
 
 async function processPluginMessage(message : any) {
-  if(message?.request == "READ_TODO_STORAGE") {
+  if(message?.type === RequestType.GET) {
     console.log("READ_TODO_STORAGE");
-    let todoEntries = await figma.clientStorage.getAsync("todo_entries");
+
+    let readResult = await figma.clientStorage.getAsync(message.payload);
     
     let responce = {
-      result: todoEntries || [],
+      result: readResult || undefined,
       timestamp: message.timestamp
     }
 
     figma.ui.postMessage(responce);
-  } else if(message?.request == "WRITE_TODO_STORAGE") {
+  } else if (message?.type === RequestType.SET) {
     console.log("WRITE_TODO_STORAGE");
-    let todoEntries = message.payload;
+    let {key, value} = message.payload;
 
     let responce = {
-      result: "OK",
       timestamp: message.timestamp
     }
 
-    await figma.clientStorage.setAsync("todo_entries", todoEntries);
+    await figma.clientStorage.setAsync(key, value);
     figma.ui.postMessage(responce);
   }
 }
