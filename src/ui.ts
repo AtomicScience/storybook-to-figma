@@ -4,13 +4,16 @@ import { selectMenu, disclosure } from 'figma-plugin-ds';
 import ModalWindow from './modules/ui/ModalWindow'
 import StorybookAdder from './modules/ui/StorybookAdder';
 import StorybookStorage from './modules/storybook/StorybookStorage';
+import StorybookChooser from './modules/ui/StorybookChooser';
 
 window.addEventListener('message', (e) => window.parent.postMessage(e.data, '*'));
 
 window.onload = () => {
-    selectMenu.init()
     disclosure.init()
     new ModalWindow().init();
 
-    new StorybookAdder(new StorybookStorage()).init();
+    let storage = new StorybookStorage();
+
+    new StorybookAdder(storage).init();
+    new StorybookChooser(storage).init();
 }
