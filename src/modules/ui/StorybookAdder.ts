@@ -10,7 +10,7 @@ export default class StorybookAdder {
 
     async init() {
         await this.storage.awaitForRequest();
-        
+
         document.getElementById("storybook_link").addEventListener("input", this.onInput.bind(this));
         document.getElementById("storybook_name").addEventListener("input", this.onInput.bind(this));
 
@@ -44,6 +44,6 @@ export default class StorybookAdder {
     private setButtonDisabled(disabled : boolean) {
         let button = document.getElementById("storybook_button") as HTMLButtonElement;
 
-        button.disabled  = disabled;
+        button.disabled = disabled;
     }
 }
