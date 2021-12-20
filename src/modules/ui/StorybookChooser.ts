@@ -8,9 +8,7 @@ export default class StorybookChooser {
         this.storage = storage;
     }
 
-    async init() {
-        await this.storage.awaitForRequest();
-
+    init() {
         this.fillSelectWithStorybooks();
         this.storage.addCallback(this.fillSelectWithStorybooks.bind(this));
 

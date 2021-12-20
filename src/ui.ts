@@ -9,11 +9,13 @@ import Iframe from './modules/ui/Iframe';
 
 window.addEventListener('message', (e) => window.parent.postMessage(e.data, '*'));
 
-window.onload = () => {
+window.onload = async () => {
     disclosure.init()
     new ModalWindow().init();
 
     let storage = new StorybookStorage();
+
+    await storage.awaitForRequest();
 
     new StorybookAdder(storage).init();
     new StorybookChooser(storage).init();
