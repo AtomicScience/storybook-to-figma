@@ -8,7 +8,9 @@ export default class StorybookAdder {
         this.storage = storage;
     }
 
-    init() {
+    async init() {
+        await this.storage.awaitForRequest();
+        
         document.getElementById("storybook_link").addEventListener("input", this.onInput.bind(this));
         document.getElementById("storybook_name").addEventListener("input", this.onInput.bind(this));
 

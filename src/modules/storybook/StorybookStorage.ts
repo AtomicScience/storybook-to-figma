@@ -6,14 +6,22 @@ const storageKey = "storybooks";
 export default class StorybookStorage {
     private storybooks : Storybook[];
     private figmaStorage : FigmaStorage;
+    private loadingPromise : Promise<void>;
 
     constructor() {
         this.figmaStorage = new FigmaStorage();
 
         this.storybooks = [];
 
-        this.figmaStorage.getItem(storageKey)
-            .then((result) => this.storybooks = result);
+        this.loadingPromise = this.requestStorybooks();
+    }
+
+    async requestStorybooks() : Promise<void> {
+        this.storybooks = await this.figmaStorage.getItem(storageKey);
+    }
+
+    awaitForRequest() {
+        return this.loadingPromise;
     }
 
     getStorybooks() {
