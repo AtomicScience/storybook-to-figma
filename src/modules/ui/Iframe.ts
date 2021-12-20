@@ -16,9 +16,12 @@ export default class Iframe {
 
     private updateCurrentStorybookFromStorage() {
         let selectedId = this.storage.getSelectedId();
-        this.currentStorybook = this.storage.getStorybookById(selectedId);
+        let newStorybook = this.storage.getStorybookById(selectedId);
 
-        this.setIframeAddress(this.currentStorybook?.address);
+        if(newStorybook?.id !== this.currentStorybook?.id) {
+            this.currentStorybook = newStorybook;
+            this.setIframeAddress(this.currentStorybook?.address);
+        }
     }
 
     private setIframeAddress(address : string) {
