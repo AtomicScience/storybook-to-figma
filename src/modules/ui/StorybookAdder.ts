@@ -31,18 +31,9 @@ export default class StorybookAdder {
 
         this.wipeInputsValues();
 
-        // TODO: Debugging workaround, do not forget to remove
-        if(name === "CLEAR") {
-            this.storage.clearStorage();
-            console.log(this.storage.getStorybooks());
-            return;
-        }
-
         let storybook = new Storybook(name, link);
 
         this.storage.addStorybook(storybook);
-
-        console.log(this.storage.getStorybooks());
     }
 
     private getValueFromInput(id : string) {
