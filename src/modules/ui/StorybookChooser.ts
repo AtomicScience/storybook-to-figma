@@ -28,7 +28,8 @@ export default class StorybookChooser {
         this.addHiddenOption(select)
 
         this.storage.getStorybooks().forEach((value) => {
-            select.add(new Option(value.name, value.id));
+            let shouldBeSelected = value.id === this.storage.getSelectedId();
+            select.add(new Option(value.name, value.id, false, shouldBeSelected));
         });
 
         (document.getElementById("delete_button") as HTMLButtonElement).disabled = this.storage.isEmpty();
@@ -42,6 +43,10 @@ export default class StorybookChooser {
     }
 
     private onSelectInput(e : InputEvent) {
+        let selectedId = (document.getElementById("storybook_select") as HTMLSelectElement).value;
+
+        this.storage.setSelectedId(selectedId);
+
         this.setDeleteButtonUnlocked(false);
     } 
 
@@ -54,6 +59,7 @@ export default class StorybookChooser {
         let id = select.selectedOptions[0].value;
 
         this.storage.removeStorybookByID(id);
+        this.storage.setSelectedId(undefined);
         this.setDeleteButtonUnlocked(false);
     }
 
