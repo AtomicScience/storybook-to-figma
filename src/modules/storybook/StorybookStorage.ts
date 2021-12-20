@@ -7,11 +7,13 @@ export default class StorybookStorage {
     private storybooks : Storybook[];
     private figmaStorage : FigmaStorage;
     private loadingPromise : Promise<void>;
+    private callbacks : (() => void)[];
 
     constructor() {
         this.figmaStorage = new FigmaStorage();
 
         this.storybooks = [];
+        this.callbacks  = [];
 
         this.loadingPromise = this.requestStorybooks();
     }
@@ -35,13 +37,13 @@ export default class StorybookStorage {
     addStorybook(storybook : Storybook) {
         this.storybooks.push(storybook);
 
-        this.saveStorybooks();
+        this.commitStorageChanges();
     }
 
     removeStorybook(storybook? : Storybook) {
         this.storybooks = this.storybooks.filter(item => item != storybook);
 
-        this.saveStorybooks();
+        this.commitStorageChanges();
     }
 
     removeStorybookByID(id: string) {
@@ -51,10 +53,24 @@ export default class StorybookStorage {
     clearStorage() {
         this.storybooks = []
 
-        this.saveStorybooks();
+        this.commitStorageChanges();
     }
 
-    private async saveStorybooks() {
+    isEmpty() {
+        return this.storybooks.length === 0;
+    }
+
+    private async commitStorageChanges() {
+        this.callbacks.forEach(callback => callback());
+
         await this.figmaStorage.setItem(storageKey, this.storybooks);
+    }
+
+    addCallback(callback: () => void) {
+        this.callbacks.push(callback);
+    }
+
+    removeCallback(callback: () => void) {
+        this.callbacks = this.callbacks.filter(value => value !== callback);
     }
 }
