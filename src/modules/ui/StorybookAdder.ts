@@ -29,6 +29,8 @@ export default class StorybookAdder {
         let link = this.getValueFromInput("storybook_link");
         let name = this.getValueFromInput("storybook_name");
 
+        this.wipeInputsValues();
+
         // TODO: Debugging workaround, do not forget to remove
         if(name === "CLEAR") {
             this.storage.clearStorage();
@@ -47,6 +49,14 @@ export default class StorybookAdder {
         let input = document.getElementById(id) as HTMLInputElement;
 
         return input.value;
+    }
+
+    private wipeInputsValues() {
+        let link = document.getElementById("storybook_link") as HTMLInputElement;
+        let name = document.getElementById("storybook_name") as HTMLInputElement;
+
+        link.value = "";
+        name.value = "";
     }
 
     private setButtonDisabled(disabled : boolean) {
