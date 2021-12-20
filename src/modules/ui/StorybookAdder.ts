@@ -1,4 +1,5 @@
 /// <reference lib="dom" />
+import Storybook from "../storybook/Storybook";
 import StorybookStorage from "../storybook/StorybookStorage";
 
 export default class StorybookAdder {
@@ -28,7 +29,14 @@ export default class StorybookAdder {
         let link = this.getValueFromInput("storybook_link");
         let name = this.getValueFromInput("storybook_name");
 
-        let storybook = { name: name, address: link };
+        // TODO: Debugging workaround, do not forget to remove
+        if(name === "CLEAR") {
+            this.storage.clearStorage();
+            console.log(this.storage.getStorybooks());
+            return;
+        }
+
+        let storybook = new Storybook(name, link);
 
         this.storage.addStorybook(storybook);
 
