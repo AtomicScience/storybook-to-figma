@@ -11,10 +11,9 @@ export default class StorybookStorage {
         this.figmaStorage = new FigmaStorage();
 
         this.storybooks = [];
-    }
 
-    async init() {
-        this.storybooks = await this.figmaStorage.getItem(storageKey);
+        this.figmaStorage.getItem(storageKey)
+            .then((result) => this.storybooks = result);
     }
 
     getStorybooks() {
