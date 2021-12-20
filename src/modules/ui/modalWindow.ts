@@ -1,29 +1,27 @@
 /// <reference lib="dom" />
-function init() : void {
-    document
-        .getElementById("open_modal_button")
-        .addEventListener("click", onOpenModalWindowClick);
+export default class StorybookAdder {
+    init() : void {
+        document
+            .getElementById("open_modal_button")
+            .addEventListener("click", this.onOpenModalWindowClick.bind(this));
 
-    document
-        .getElementById("close_modal_button")
-        .addEventListener("click", onCloseModalWindowClick)
-}
+        document
+            .getElementById("close_modal_button")
+            .addEventListener("click", this.onCloseModalWindowClick.bind(this))
+    }
 
-function onCloseModalWindowClick(e : MouseEvent) {
-    setModalWindowOpen(false);
-}
+    private onCloseModalWindowClick(e : MouseEvent) {
+        this.setModalWindowOpen(false);
+    }
 
-function onOpenModalWindowClick(e : MouseEvent) {
-    setModalWindowOpen(true);
-}
+    private onOpenModalWindowClick(e : MouseEvent) {
+        this.setModalWindowOpen(true);
+    }
 
-function setModalWindowOpen(open : boolean) {
-    let attributeValueToSet = open ? "inline" : "none";
+    private setModalWindowOpen(open : boolean) {
+        let attributeValueToSet = open ? "inline" : "none";
 
-    let modalWindow = document.getElementById("modal_background");
-    modalWindow.style.display = attributeValueToSet;
-}
-
-export const modalWindow = {
-    init: init,
+        let modalWindow = document.getElementById("modal_background");
+        modalWindow.style.display = attributeValueToSet;
+    }
 }
