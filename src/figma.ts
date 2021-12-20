@@ -9,7 +9,6 @@ figma.showUI(__html__, {
 })
 
 figma.ui.onmessage = async (message) => {
-  console.log(message);
   let data = message.data;
 
   if(data) {

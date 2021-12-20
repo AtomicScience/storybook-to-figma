@@ -10,16 +10,12 @@ export default class FigmaRequestListener {
 
     async processPossibleRequest(request : any) {
         if (request?.type === undefined) return;
-        
-        console.log(RequestType[request.type]);
 
         if (request.type === RequestType.GET) {
             await this.processGetRequest(request);
         } else if(request.type === RequestType.SET) {
             await this.processSetRequest(request);
         }
-
-        console.log("A");
     }
 
     private async processGetRequest(request: FigmaRequest) {
