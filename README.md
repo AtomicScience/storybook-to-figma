@@ -1,2 +1,2 @@
 # Storybook to Figma
-WIP
+Moved here: https://github.com/bem/storybook-to-figma
